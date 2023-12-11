@@ -1,0 +1,117 @@
+<mujoco model="thrustbox0">
+	<compiler inertiafromgeom="true" coordinate="local"/>
+	<option	timestep="0.01" gravity="0 0 0" density="1" viscosity="1e-5" />
+	
+	<visual>
+		<map force="0.1" zfar="30"/>
+		<rgba haze="0.15 0.25 0.35 1"/>
+		<global offwidth="2560" offheight="1440" elevation="-20" azimuth="120"/>
+	</visual>
+	
+	<asset>
+	    <texture type="skybox" builtin="gradient" rgb1=".3 .5 .7" rgb2="0 0 0" width="32" height="512"/>
+	</asset>
+	
+	<worldbody>
+		<!-- <geom name="floor" pos = "0 0 0" size="2 2 .125" type="plane" conaffinity="1" condim="3"/> -->
+		<!-- Satellite -->
+		<body name="box" pos="0 0 1" >
+		
+			<geom name="core" pos="0 0 0" quat = "1 0 0 0" size=".2 .2 .2" type="box"  rgba="0.3 0.3 0.8 .5" mass = ".1"/>
+			
+			<joint name="root"   type="free" damping="0" armature="0" pos="0 0 0" />
+
+			
+			<!-- Thruster geom that are pointing in +z direction -->
+			<site name="motor+Z+x+y" type="cylinder" size="0.02 0.05"  fromto = ".18 .18 .2 .18 .18 .22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+Z-x+y" type="cylinder" size="0.02 0.05"  fromto = "-.18 .18 .2 -.18 .18 .22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+Z-x-y" type="cylinder" size="0.02 0.05"  fromto = "-.18 -.18 .2 -.18 -.18 .22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+Z+x-y" type="cylinder" size="0.02 0.05"  fromto = ".18 -.18 .2 .18 -.18 .22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			
+			<!-- Thruster geom that are pointing in -z direction -->
+			<site name="motor-Z+x+y" type="cylinder" size="0.02 0.05"  fromto = " .18  .18 -.2  .18  .18 -.22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-Z-x+y" type="cylinder" size="0.02 0.05"  fromto = "-.18  .18 -.2 -.18  .18 -.22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-Z-x-y" type="cylinder" size="0.02 0.05"  fromto = "-.18 -.18 -.2 -.18 -.18 -.22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-Z+x-y" type="cylinder" size="0.02 0.05"  fromto = " .18 -.18 -.2  .18 -.18 -.22"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			
+			<!-- Thruster geom that are pointing in +y direction -->
+			<site name="motor+Y+x+z" type="cylinder" size="0.02 0.05"  fromto = " .18  .2  .18  .18  .22  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+Y+x-z" type="cylinder" size="0.02 0.05"  fromto = " .18  .2 -.18  .18  .22 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+Y-x-z" type="cylinder" size="0.02 0.05"  fromto = "-.18  .2 -.18 -.18  .22 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+Y-x+z" type="cylinder" size="0.02 0.05"  fromto = "-.18  .2  .18 -.18  .22  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			
+			<!-- Thruster geom that are pointing in -y direction -->
+			<site name="motor-Y+x+z" type="cylinder" size="0.02 0.05"  fromto = " .18 -.2  .18  .18 -.22  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-Y+x-z" type="cylinder" size="0.02 0.05"  fromto = " .18 -.2 -.18  .18 -.22 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-Y-x-z" type="cylinder" size="0.02 0.05"  fromto = "-.18 -.2 -.18 -.18 -.22 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-Y-x+z" type="cylinder" size="0.02 0.05"  fromto = "-.18 -.2  .18 -.18 -.22  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			
+			<!-- Thruster geom that are pointing in +x direction -->
+			<site name="motor+X+y+z" type="cylinder" size="0.02 0.05"  fromto = " .2  .18  .18  .22   .18  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+X-y+z" type="cylinder" size="0.02 0.05"  fromto = " .2 -.18  .18  .22  -.18  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+X-y-z" type="cylinder" size="0.02 0.05"  fromto = " .2 -.18 -.18  .22  -.18 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor+X+y-z" type="cylinder" size="0.02 0.05"  fromto = " .2  .18 -.18  .22   .18 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			                                                                             
+			<!-- Thrustehat are pointing in +x direction -->                              
+			<site name="motor-X+y+z" type="cylinder" size="0.02 0.05"  fromto = "-.2  .18  .18 -.22   .18  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-X-y+z" type="cylinder" size="0.02 0.05"  fromto = "-.2 -.18  .18 -.22  -.18  .18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-X-y-z" type="cylinder" size="0.02 0.05"  fromto = "-.2 -.18 -.18 -.22  -.18 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor-X+y-z" type="cylinder" size="0.02 0.05"  fromto = "-.2  .18 -.18 -.22   .18 -.18 "quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+		
+			<!-- Visualization of the coordinate frame --->
+			<site name="qcX" type="box" pos="0.2 0.0 0.0" size="0.2 0.005 0.005"  quat = " 1.000  0.0  0.0    0."     rgba="1 0 0 1" />
+			<site name="qcY" type="box" pos="0.0 0.2 0.0" size="0.2 0.005 0.005"  quat = " 0.707  0.0  0.0    0.707"  rgba="0 1 0 1" />
+			<site name="qcZ" type="box" pos="0.0 0.0 0.2" size="0.2 0.005 0.005"  quat = "-0.707  0.0  0.707  0."     rgba="0 0 1 1" />
+			
+			<!--
+			<site name="motor0" type="cylinder" size="0.1 0.05"  fromto = ".0 0 .2 .0 .0 .25"quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor1" type="cylinder" size="0.1 0.05"  fromto = ".0 .2 .0 .0 .25 .0"  quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor2" type="cylinder" size="0.1 0.05"  fromto = ".2 .0 .0 .25 0 .0"  quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor3" type="cylinder" size="0.1 0.05"  fromto = "0 -.2 .0 .0 -.25 .0"  quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			<site name="motor4" type="cylinder" size="0.1 0.05"  fromto = "-.2 .0 .0 -.25 0 .0"  quat = "1.0 0.0 0.0 0." rgba="0.3 0.8 0.3 1"/>
+			-->
+
+		</body>
+		<!-- Target -->
+		<body name="target" pos=".1 -.1 .01">
+			<joint armature="0" axis="1 0 0" damping="0" limited="true" name="target_x" pos="0 0 0" range="-1.27 1.27" ref=".1" stiffness="0" type="slide"/>
+			<joint armature="0" axis="0 1 0" damping="0" limited="true" name="target_y" pos="0 0 0" range="-1.27 1.27" ref="-.1" stiffness="0" type="slide"/>
+			<geom conaffinity="0" contype="0" name="target" pos="0 0 0" rgba="0.9 0.2 0.2 1" size=".009" type="sphere"/>
+		</body>	
+	
+	</worldbody>
+    <actuator>
+	    <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Z+x+y"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Z-x+y"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Z-x-y"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Z+x-y"/>
+																   
+		<motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Z+x+y"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Z-x+y"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Z-x-y"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Z+x-y"/>
+																   
+	    <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Y+x+z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Y+x-z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Y-x-z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+Y-x+z"/>		
+																   
+		<motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Y+x+z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Y+x-z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Y-x-z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-Y-x+z"/>
+		
+	    <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+X+y+z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+X-y+z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+X-y-z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor+X+y-z"/>
+		
+		<motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-X+y+z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-X-y+z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-X-y-z"/>
+        <motor ctrllimited="true" ctrlrange="0.0 1.0" gear=".0  0. .2  0. 0. 0." site="motor-X+y-z"/>
+		
+
+	</actuator>
+</mujoco>
+ 

@@ -2,7 +2,7 @@ import gymnasium as gym
 import numpy as np
 
 
-class ClipReward(gym.RewardWrapper):
+class RecordStat(gym.wrappers.record_episode_statistics):
     def __init__(self, env, min_reward, max_reward):
         super().__init__(env)
         self.min_reward = min_reward
