@@ -1,0 +1,2 @@
+No Bounds: Runtime: 42615.64227414131
+Bound > 10: Runtime: 42994.92338395119

@@ -12,8 +12,6 @@ from gymnasium.spaces import Box
 from pathlib import Path
 import gym_examples.thrustboxbuilder
 
-# Todo: write data saving
-# Todo:
 # Todo: write setup.py + other setup things
 
 
